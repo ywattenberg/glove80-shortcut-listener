@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glove80 Layout Editor</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f0f2f6;color:#1e2636;font:15px "Geist","Segoe UI",sans-serif}
+button,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #5954dc;outline-offset:3px}
+header{background:#fff;border-bottom:1px solid #dce1eb}.bar{max-width:1440px;margin:auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;font-weight:750}.mark{display:grid;place-items:center;width:36px;height:36px;background:#222144;color:white;border-radius:10px}.mark svg{width:21px}.controls{display:flex;align-items:center;gap:12px}#file{color:#566178;font:13px Consolas,monospace;overflow-wrap:anywhere}
+.primary,.secondary,.tab{border:1px solid transparent;border-radius:8px;padding:9px 14px;font-weight:650}.primary{background:#4d43cb;color:white}.primary:disabled{background:#e5e3f4;color:#686481;cursor:default}.secondary{background:#fff;border-color:#dce1eb;color:#30394b}.secondary:disabled{opacity:.65;cursor:default}
+main{max-width:1440px;margin:auto;padding:38px 32px}.intro{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:23px}
+h1{font-size:clamp(27px,3vw,40px);letter-spacing:-.045em;margin:0 0 6px}h2{font-size:19px;letter-spacing:-.02em;margin:0}p{margin:0;color:#566178;line-height:1.55}.tag{color:#414b65;font-size:13px;white-space:nowrap}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:18px;align-items:start}.board-card,.detail{background:#fff;border:1px solid #dce1eb;border-radius:15px;min-width:0}.board-card{padding:19px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.tabs{display:flex;flex-wrap:wrap;gap:3px;padding:4px;background:#f0f1f7;border-radius:10px}.tab{background:transparent;color:#525b71;padding:7px 11px;font-size:13px}.tab[aria-pressed=true]{background:white;box-shadow:0 1px 3px #23274420;color:#443bb6}
+.scroller{margin:22px 0 16px;overflow:auto;padding:2px}.board{position:relative;min-width:595px;aspect-ratio:18/8.35;background:#f5f6fa;border-radius:12px;border:1px solid #e9ebf2}.key{position:absolute;width:5.02%;height:10.8%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;background:#fff;border:1px solid #dce1ed;border-bottom:3px solid #dce1ed;border-radius:6px;text-align:center;color:#455169;font-size:clamp(9px,1vw,13px);font-weight:650;line-height:1.05;padding:2px;overflow-wrap:normal}.key small{font:600 .68em Consolas,monospace;color:#5b5a83}.key span{max-width:100%}.inactive{color:#727d93;background:#f0f2f7}.shortcut{color:#333162;border-color:#dad7f0}.assigned{background:#eeeaff;border-color:#c7bdf9;color:#393090}.key[aria-pressed=true]{background:#4d43cb;border-color:#342ba5;color:#fff}.key[aria-pressed=true] small{color:#fff}.activation{border-color:#aabbd3;background:#e7eef9;color:#324c75}
+.legend{display:flex;color:#59637a;gap:17px;flex-wrap:wrap;font-size:12px}.legend span{display:flex;align-items:center;gap:6px}.dot{width:10px;height:10px;border-radius:3px;background:#eeeaff;border:1px solid #c7bdf9}.dot.thumb{background:#e7eef9;border-color:#aabbd3}
+.detail{padding:19px}.detail-top{padding-bottom:16px;border-bottom:1px solid #e7e9f0;margin-bottom:16px}.detail-top p{margin-top:4px}.detail label{font-weight:650;font-size:13px;display:block;margin-bottom:7px}select{width:100%;border:1px solid #cdd4e4;border-radius:7px;background:#fff;color:#253048;padding:8px}#action-details{padding-top:15px;font-size:13px;overflow-wrap:anywhere}.disk{margin-top:14px;min-height:24px;color:#3f4c68;font-size:13px}.error{color:#9a2343}
+@media(max-width:1000px){.workspace{grid-template-columns:minmax(0,1fr)}.detail{max-width:none}.detail-top{margin-bottom:14px}}@media(max-width:620px){main,.bar{padding-left:15px;padding-right:15px}.intro{display:block}.tag{display:block;margin-top:8px}.board-card{padding:12px}#file{display:none}}
+.key small{font:650 9px "Geist","Segoe UI",sans-serif;line-height:1.05}.key.long{font-size:clamp(8px,.88vw,11px)}.key-list{margin-top:16px;color:#43506a}.key-list summary{cursor:pointer;font-weight:650}.key-list ul{padding-left:20px;columns:2;line-height:1.55}.key-list li{break-inside:avoid;margin-bottom:4px}.action-buttons{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.action-buttons button{font-size:12px;padding:7px 9px}.action-form{margin-top:16px;border-top:1px solid #e7e9f0;padding-top:12px}.action-form input,.action-form textarea{width:100%;border:1px solid #cdd4e4;border-radius:7px;padding:7px;font:inherit;margin-bottom:9px}.action-form select{margin-bottom:9px}.action-form textarea{resize:vertical}.action-form label{margin-bottom:4px}.action-form p{font-size:12px;margin-bottom:8px}
+</style>
+<header><div class="bar"><div class="brand"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="5" width="9" height="13" rx="2"/><rect x="13" y="5" width="9" height="13" rx="2"/><path d="M5 9h3m-3 4h3m8-4h3m-3 4h3"/></svg></span>Glove80 Layout Editor</div><div class="controls"><span id="file"></span><button id="reload" class="secondary">Reload</button><button id="save" class="primary" disabled>Save changes</button></div></div></header>
+<main>
+<div class="intro"><div><h1>Keyboard layout</h1><p>Browse your firmware layers or assign a Windows action to a Custom-layer key.</p></div><span class="tag">Glove80 · 80 keys</span></div>
+<div class="workspace">
+<section class="board-card" aria-label="Firmware cheat sheet">
+<div class="toolbar"><h2>Layer cheat sheet</h2><div class="tabs" id="tabs" aria-label="Firmware layers"></div></div>
+<div class="scroller"><div id="board" class="board" aria-label="Glove80 physical key positions"></div></div>
+<div id="legend" class="legend"></div><details class="key-list"><summary>Read all keys as text</summary><ul id="key-list"></ul></details>
+</section>
+<aside class="detail" aria-label="Shortcut assignment"><div class="detail-top"><h2 id="selection">Shortcut assignment</h2><p id="description"></p></div><div id="edit" hidden><label for="action">Windows action</label><select id="action"></select><p id="action-details"></p><div class="action-buttons"><button class="secondary" id="new-action">New action</button><button class="secondary" id="edit-action">Edit action</button></div><form class="action-form" id="action-form" hidden><div id="action-fields"></div><div class="action-buttons"><button type="submit" class="primary">Use this action</button><button type="button" id="cancel-action" class="secondary">Cancel</button></div></form></div><p id="read-only" hidden>Switch to Custom to edit listener bindings.</p></aside>
+</div>
+<p id="status" class="disk" role="status"></p>
+</main>
+<script src="/legends.js"></script><script>
+const byId = id => document.getElementById(id);
+const layers = ['Base','Special','Movement','Magic','Custom'];
+let draftActions = Object.create(null), draftApps = Object.create(null);
+const actions = () => ({...saved?.actions, ...draftActions});
+const apps = () => ({...saved?.apps, ...draftApps});
+let layer = 'Custom', selected = 'A', keys = [], saved, bindings = {}, busy = false;
+const dirty = () => saved && (Object.keys(draftActions).length || Object.keys(draftApps).length || JSON.stringify(Object.entries(bindings).sort()) !== JSON.stringify(Object.entries(saved.bindings).sort()));
+function status(message, error = false) {
+  byId('status').textContent = message;
+  byId('status').classList.toggle('error', error);
+}
+async function request(url, options) {
+  const response = await fetch(url, options);
+  const value = await response.json();
+  if (!response.ok) throw new Error(value.error || 'Editor request failed');
+  return value;
+}
+function render() {
+  const tabs = byId('tabs');
+  if (!tabs.children.length) {
+    for (const name of layers) {
+      const tab = document.createElement('button');
+      tab.className = 'tab'; tab.textContent = name;
+      tab.onclick = () => { layer = name; closeAction(); render(); };
+      tabs.append(tab);
+    }
+  }
+  [...tabs.children].forEach(tab => tab.setAttribute('aria-pressed', tab.textContent === layer));
+  const board = byId('board');
+  if (!board.children.length) keys.forEach(key => board.append(document.createElement(key.slot ? 'button' : 'div')));
+  const list = byId('key-list');
+  list.replaceChildren();
+  keys.forEach((key, index) => {
+    let element = board.children[index];
+    const isShortcut = layer === 'Custom' && !!key.slot;
+    const inherited = key.layers[layer] === String.fromCharCode(8595);
+        const full = isShortcut ? key.slot : readable(inherited ? key.layers.Base : key.layers[layer]);
+    const [main, hold] = full.split(' · Hold ');
+    const text = main.replace(/ arrow$/, '').replace(/^Disabled$/, '—');
+    const description = isShortcut ? key.chord + ' · ' + (actions()[bindings[key.slot]]?.label || 'Unassigned') : full;
+    const row = document.createElement('li');
+    const physical = readable(key.layers.Base).split(' · Hold ')[0];
+    row.textContent = (thumbs[index] ? 'Thumb · ' : '') + physical + ' — ' + description + (inherited ? ' (inherits)' : '');
+    list.append(row);
+    if ((element.tagName === 'BUTTON') !== isShortcut) {
+      const replacement = document.createElement(isShortcut ? 'button' : 'div');
+      element.replaceWith(replacement); element = replacement;
+    }
+    element.className = 'key';
+    const [x, y, rotation] = thumbs[index] ? [(thumbs[index][0]-335)/140, (thumbs[index][1]-455)/140, thumbs[index][2]] : [key.x,key.y,0];
+    element.style.left = (x * 5.43 + 1.25) + '%';
+    element.style.top = (y * 11.68 + 3) + '%';
+    element.style.transform = 'rotate(' + rotation + 'deg)';
+    element.classList.toggle('long', text.length >= 9);
+    element.classList.toggle('inactive', inherited);
+    element.classList.toggle('activation', key.activation && (layer === 'Base' || layer === 'Custom'));
+    element.classList.toggle('shortcut', isShortcut);
+    element.classList.toggle('assigned', isShortcut && !!bindings[key.slot]);
+    const title = inherited ? full + ' (inherits from lower layer)' : full;
+    const name = document.createElement('span');
+    name.textContent = text;
+    name.style.transform = "rotate(" + (-rotation) + "deg)";
+    element.replaceChildren(name);
+    if (hold) { const detail = document.createElement("small"); detail.textContent = hold; element.append(detail); }
+    element.title = title;
+    if (isShortcut) {
+      const chord = document.createElement('small');
+      chord.textContent = key.chord.split('+').at(-1);
+      element.append(chord);
+      const binding = actions()[bindings[key.slot]]?.label || 'Unassigned';
+      element.title = key.slot + ' · ' + key.chord + ' · ' + binding;
+      element.setAttribute('aria-label', element.title);
+      element.setAttribute('aria-pressed', selected === key.slot);
+      element.onclick = () => { selected = key.slot; closeAction(); render(); };
+    }
+  });
+  byId('legend').innerHTML = layer === 'Custom'
+    ? '<span><i class="dot"></i>Assigned shortcut</span><span><i class="dot thumb"></i>Custom thumb key</span><span>Shaded keys inherit a lower layer</span>'
+    : '<span>Shaded keys inherit a lower layer</span><span>Dual-role keys show tap / hold</span>';
+  const show = layer === 'Custom';
+  const slot = keys.find(key => key.slot === selected);
+  byId('selection').textContent = show && slot ? 'Custom · ' + selected : layer + ' layer';
+  byId('description').textContent = show && slot ? slot.chord + ' · Windows listener' : 'Firmware cheat sheet';
+  byId('edit').hidden = !show || !saved;
+  byId('read-only').hidden = show;
+  const select = byId('action');
+  select.replaceChildren(new Option('Unassigned', ''));
+  for (const [id, action] of Object.entries(actions())) select.add(new Option(action.label + ' (' + id + ')', id));
+  select.value = bindings[selected] || '';
+  const action = actions()[bindings[selected]];
+  byId('action-details').textContent = action ? [action.type, action.command || action.exe].filter(Boolean).join(' · ') : 'Choose a named action from the TOML file.';
+  byId("edit-action").disabled = busy || !action;
+  byId("new-action").disabled = busy;
+  select.disabled = busy;
+  byId('save').disabled = busy || !dirty();
+  byId('reload').disabled = busy;
+}
+async function loadConfig() {
+  busy = true; render();
+  try {
+    saved = await request('/config');
+    bindings = {...saved.bindings};
+    draftActions = Object.create(null);
+    draftApps = Object.create(null);
+    closeAction();
+    byId('file').textContent = saved.file;
+    status(Object.keys(bindings).length + ' of 26 shortcuts assigned.');
+  } catch (error) { status(error.message, true); }
+  finally { busy = false; render(); }
+}
+const types = {'app.command':'Send an app command','process.run':'Run a program or script','window.focus_or_launch':'Focus or launch a window'};
+const form = byId('action-form');
+let editing, formType;
+function closeAction() { form.hidden = true; }
+function actionForm(name) {
+  editing = name;
+  const action = actions()[name] || {};
+  form.hidden = false;
+  byId('action-fields').replaceChildren();
+  const fields = byId('action-fields');
+  function field(id, label, value = '', kind = 'input', required = true) {
+    const caption = document.createElement('label');
+    caption.htmlFor = 'field-' + id;
+    caption.textContent = label;
+    const input = document.createElement(kind);
+    input.id = caption.htmlFor;
+    input.name = id;
+    input.required = required;
+    if (kind !== 'select') input.value = value;
+    fields.append(caption,input);
+    return input;
+  }
+  const id = field('id','Action ID', name || '');
+  if (name) id.readOnly = true;
+  else id.pattern = '[a-zA-Z0-9_-]+';
+  field('label','Action name',action.label);
+  const type = field('type','Action type','','select');
+  for (const [value,label] of Object.entries(types)) type.add(new Option(label,value));
+  type.value = action.type || 'app.command';
+  const permanent = fields.children.length;
+  function showFields() {
+    while (fields.children.length > permanent) fields.lastChild.remove();
+    formType = type.value;
+    const current = action.type === formType ? action : {};
+    if (formType === 'app.command') {
+      field('app','App ID',current.app).pattern = '[a-zA-Z0-9_-]+';
+      const pipe = field('pipe','Local named pipe',apps()[current.app]?.pipe);
+      form.elements.app.oninput = event => { pipe.value = apps()[event.target.value]?.pipe || ''; };
+      field('command','Command name', current.command);
+      field('args','JSON arguments',JSON.stringify(current.args || {}, null, 2),'textarea');
+    } else {
+      if (formType === 'window.focus_or_launch') field('process','Process name',current.process);
+      field('exe','Executable',current.exe);
+      field('args','JSON argument list',JSON.stringify(current.args || [], null, 2),'textarea');
+      if (formType === 'process.run') field('cwd','Working directory',current.cwd,'input',false);
+    }
+  }
+  type.onchange = showFields;
+  showFields();
+  id.focus();
+}
+byId('new-action').onclick = () => actionForm();
+byId('edit-action').onclick = () => actionForm(bindings[selected]);
+byId('cancel-action').onclick = closeAction;
+form.onsubmit = event => {
+  event.preventDefault();
+  const values = Object.fromEntries(new FormData(form));
+  const {id,label,app,pipe,command,exe,process,cwd} = values;
+  if (!editing && Object.hasOwn(actions(),id)) { status('That action ID already exists.', true); return; }
+  try {
+    const args = JSON.parse(values.args);
+    let definition = {label, type: formType, args};
+    if (formType === 'app.command') {
+      if (args === null || typeof args !== 'object' || Array.isArray(args)) throw new Error('App arguments must be a JSON object.');
+      const existing = apps()[app];
+      if (existing && existing.pipe !== pipe) throw new Error('That app ID already uses a different pipe. Choose another ID or use its existing pipe.');
+      if (!existing) draftApps[app] = {pipe};
+      definition = {...definition,app,command};
+    } else {
+      if (!Array.isArray(args) || args.some(arg => typeof arg !== 'string')) throw new Error('Program arguments must be a JSON list of strings.');
+      definition.exe = exe;
+      if (process) definition.process = process;
+      if (cwd) definition.cwd = cwd;
+    }
+    draftActions[id] = definition;
+    bindings[selected] = id;
+    closeAction();
+    status('Action and binding staged. Save changes to write the TOML file.');
+    render();
+  } catch (error) { status(error.message,true); }
+};
+byId('action').onchange = event => {
+  closeAction();
+  if (event.target.value) bindings[selected] = event.target.value;
+  else delete bindings[selected];
+  status(dirty() ? 'Unsaved binding changes.' : 'Bindings match the configuration file.');
+  render();
+};
+byId('reload').onclick = () => { if (!dirty() || confirm('Discard unsaved binding changes?')) loadConfig(); };
+byId('save').onclick = async () => {
+  busy = true; render();
+  try {
+    saved = await request('/config', {method:'POST',headers:{'Content-Type':'application/json','X-Glove80-Editor':'1'},body:JSON.stringify({revision:saved.revision,bindings,actions:draftActions,apps:draftApps})});
+    bindings = {...saved.bindings};
+    draftActions = Object.create(null);
+    draftApps = Object.create(null);
+    closeAction();
+    status('Saved. If the listener is running, it picks up changes on its next config check.');
+  } catch (error) { status(error.message, true); }
+  finally { busy = false; render(); }
+};
+window.addEventListener('beforeunload', event => { if (dirty()) { event.preventDefault(); event.returnValue = ''; } });
+request('/keyboard.json').then(layout => { keys = layout; return loadConfig(); }).catch(error => status(error.message, true));
+</script>
+</html>

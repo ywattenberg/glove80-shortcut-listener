@@ -1,0 +1,21 @@
+version = 1
+
+[layers.special]
+A = "start_focus"
+S = "open_workspace"
+
+[apps.timer]
+pipe = "my-timer.commands"
+
+[actions.start_focus]
+label = "Start 25-minute timer"
+type = "app.command"
+app = "timer"
+command = "start_timer"
+args = { minutes = 25 }
+
+[actions.open_workspace]
+label = "Open work project"
+type = "process.run"
+exe = "powershell.exe"
+args = ["-NoProfile", "-NonInteractive", "-File", 'C:\Scripts\Open-Workspace.ps1', "-Project", "Glove80"]

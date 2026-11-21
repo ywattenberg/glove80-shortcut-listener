@@ -1,0 +1,1310 @@
+[
+    {
+        "x":  0,
+        "y":  0.5,
+        "label":  "F1",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F1",
+                       "Special":  "C_BRI_DN",
+                       "Movement":  "–",
+                       "Magic":  "bt BT_CLR",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  1,
+        "y":  0.5,
+        "label":  "F2",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F2",
+                       "Special":  "C_BRI_UP",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  2,
+        "y":  0,
+        "label":  "F3",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F3",
+                       "Special":  "C_PREV",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  3,
+        "y":  0,
+        "label":  "F4",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F4",
+                       "Special":  "C_NEXT",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  4,
+        "y":  0,
+        "label":  "F5",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F5",
+                       "Special":  "C_PP",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  13,
+        "y":  0,
+        "label":  "F6",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F6",
+                       "Special":  "C_MUTE",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  14,
+        "y":  0,
+        "label":  "F7",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F7",
+                       "Special":  "C_VOL_DN",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  15,
+        "y":  0,
+        "label":  "F8",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F8",
+                       "Special":  "C_VOL_UP",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  16,
+        "y":  0.5,
+        "label":  "F9",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F9",
+                       "Special":  "–",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  17,
+        "y":  0.5,
+        "label":  "F10",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F10",
+                       "Special":  "PAUSE_BREAK",
+                       "Movement":  "↓",
+                       "Magic":  "bt BT_CLR_ALL",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  0,
+        "y":  1.5,
+        "label":  "=",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "EQUAL",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  1,
+        "y":  1.5,
+        "label":  "1",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "1",
+                       "Special":  "F1",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  2,
+        "y":  1,
+        "label":  "2",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "2",
+                       "Special":  "F2",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  3,
+        "y":  1,
+        "label":  "3",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "3",
+                       "Special":  "F3",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  4,
+        "y":  1,
+        "label":  "4",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "4",
+                       "Special":  "F4",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  5,
+        "y":  1,
+        "label":  "5",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "5",
+                       "Special":  "F5",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  12,
+        "y":  1,
+        "label":  "6",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "6",
+                       "Special":  "F6",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  13,
+        "y":  1,
+        "label":  "7",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "7",
+                       "Special":  "F7",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  14,
+        "y":  1,
+        "label":  "8",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "8",
+                       "Special":  "F8",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  15,
+        "y":  1,
+        "label":  "9",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "9",
+                       "Special":  "F8",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  16,
+        "y":  1.5,
+        "label":  "0",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "0",
+                       "Special":  "F9",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  17,
+        "y":  1.5,
+        "label":  "âˆ’",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "MINUS",
+                       "Special":  "F10",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  0,
+        "y":  2.5,
+        "label":  "DEL",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "DEL",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  1,
+        "y":  2.5,
+        "label":  "Q",
+        "slot":  "Q",
+        "chord":  "F22",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "Q",
+                       "Special":  "LS(N3)",
+                       "Movement":  "↓",
+                       "Magic":  "rgb_ug RGB_SPI",
+                       "Custom":  "F22"
+                   }
+    },
+    {
+        "x":  2,
+        "y":  2,
+        "label":  "W",
+        "slot":  "W",
+        "chord":  "F23",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "W",
+                       "Special":  "LS(LBKT)",
+                       "Movement":  "↓",
+                       "Magic":  "rgb_ug RGB_SAI",
+                       "Custom":  "F23"
+                   }
+    },
+    {
+        "x":  3,
+        "y":  2,
+        "label":  "E",
+        "slot":  "E",
+        "chord":  "F24",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "E",
+                       "Special":  "LS(RBKT)",
+                       "Movement":  "↓",
+                       "Magic":  "rgb_ug RGB_HUI",
+                       "Custom":  "F24"
+                   }
+    },
+    {
+        "x":  4,
+        "y":  2,
+        "label":  "R",
+        "slot":  "R",
+        "chord":  "Ctrl+Shift+F13",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "R",
+                       "Special":  "LS(BSLH)",
+                       "Movement":  "↓",
+                       "Magic":  "rgb_ug RGB_BRI",
+                       "Custom":  "LC(LS(F13))"
+                   }
+    },
+    {
+        "x":  5,
+        "y":  2,
+        "label":  "T",
+        "slot":  "T",
+        "chord":  "Ctrl+Shift+F14",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "T",
+                       "Special":  "END",
+                       "Movement":  "↓",
+                       "Magic":  "rgb_ug RGB_TOG",
+                       "Custom":  "LC(LS(F14))"
+                   }
+    },
+    {
+        "x":  12,
+        "y":  2,
+        "label":  "Y",
+        "slot":  "Y",
+        "chord":  "Ctrl+Shift+F15",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "Y",
+                       "Special":  "LS(N0)",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F15))"
+                   }
+    },
+    {
+        "x":  13,
+        "y":  2,
+        "label":  "U",
+        "slot":  "U",
+        "chord":  "Ctrl+Shift+F16",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "U",
+                       "Special":  "Num 7",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F16))"
+                   }
+    },
+    {
+        "x":  14,
+        "y":  2,
+        "label":  "I",
+        "slot":  "I",
+        "chord":  "Ctrl+Shift+F17",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "I",
+                       "Special":  "Num 8",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F17))"
+                   }
+    },
+    {
+        "x":  15,
+        "y":  2,
+        "label":  "O",
+        "slot":  "O",
+        "chord":  "Ctrl+Shift+F18",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "O",
+                       "Special":  "Num 9",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F18))"
+                   }
+    },
+    {
+        "x":  16,
+        "y":  2.5,
+        "label":  "P",
+        "slot":  "P",
+        "chord":  "Ctrl+Shift+F19",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "P",
+                       "Special":  "KP_MINUS",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F19))"
+                   }
+    },
+    {
+        "x":  17,
+        "y":  2.5,
+        "label":  "\\",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "BSLH",
+                       "Special":  "F11",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  0,
+        "y":  3.5,
+        "label":  "ESC",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "ESC",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "bootloader",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  1,
+        "y":  3.5,
+        "label":  "A",
+        "slot":  "A",
+        "chord":  "F13",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "A / LGUI",
+                       "Special":  "LS(N5)",
+                       "Movement":  "LA(N1)",
+                       "Magic":  "rgb_ug RGB_SPD",
+                       "Custom":  "F13"
+                   }
+    },
+    {
+        "x":  2,
+        "y":  3,
+        "label":  "S",
+        "slot":  "S",
+        "chord":  "F14",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "S / LALT",
+                       "Special":  "LS(N9)",
+                       "Movement":  "LA(N2)",
+                       "Magic":  "rgb_ug RGB_SAD",
+                       "Custom":  "F14"
+                   }
+    },
+    {
+        "x":  3,
+        "y":  3,
+        "label":  "D",
+        "slot":  "D",
+        "chord":  "F15",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "D / LSHFT",
+                       "Special":  "LS(N0)",
+                       "Movement":  "LA(N3)",
+                       "Magic":  "rgb_ug RGB_HUD",
+                       "Custom":  "F15"
+                   }
+    },
+    {
+        "x":  4,
+        "y":  3,
+        "label":  "F",
+        "slot":  "F",
+        "chord":  "F16",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "F / LCTRL",
+                       "Special":  "LS(BSLH)",
+                       "Movement":  "LA(N4)",
+                       "Magic":  "rgb_ug RGB_BRD",
+                       "Custom":  "F16"
+                   }
+    },
+    {
+        "x":  5,
+        "y":  3,
+        "label":  "G",
+        "slot":  "G",
+        "chord":  "F17",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "G / 1",
+                       "Special":  "PG_UP",
+                       "Movement":  "LA(N5)",
+                       "Magic":  "rgb_ug RGB_EFF",
+                       "Custom":  "F17"
+                   }
+    },
+    {
+        "x":  12,
+        "y":  3,
+        "label":  "H",
+        "slot":  "H",
+        "chord":  "F18",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "H / 1",
+                       "Special":  "LS(N5)",
+                       "Movement":  "LA(N6)",
+                       "Magic":  "–",
+                       "Custom":  "F18"
+                   }
+    },
+    {
+        "x":  13,
+        "y":  3,
+        "label":  "J",
+        "slot":  "J",
+        "chord":  "F19",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "J / RCTRL",
+                       "Special":  "Num 4",
+                       "Movement":  "LA(N7)",
+                       "Magic":  "–",
+                       "Custom":  "F19"
+                   }
+    },
+    {
+        "x":  14,
+        "y":  3,
+        "label":  "K",
+        "slot":  "K",
+        "chord":  "F20",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "K / RSHFT",
+                       "Special":  "Num 5",
+                       "Movement":  "LA(N8)",
+                       "Magic":  "–",
+                       "Custom":  "F20"
+                   }
+    },
+    {
+        "x":  15,
+        "y":  3,
+        "label":  "L",
+        "slot":  "L",
+        "chord":  "F21",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "L / RALT",
+                       "Special":  "Num 6",
+                       "Movement":  "LA(N9)",
+                       "Magic":  "–",
+                       "Custom":  "F21"
+                   }
+    },
+    {
+        "x":  16,
+        "y":  3.5,
+        "label":  ";",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "SEMI / RGUI",
+                       "Special":  "KP_PLUS",
+                       "Movement":  "LA(N0)",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  17,
+        "y":  3.5,
+        "label":  "\u0027",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "SQT",
+                       "Special":  "F12",
+                       "Movement":  "↓",
+                       "Magic":  "bootloader",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  0,
+        "y":  4.5,
+        "label":  "~",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "GRAVE",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "reset",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  1,
+        "y":  4.5,
+        "label":  "Z",
+        "slot":  "Z",
+        "chord":  "Ctrl+Shift+F20",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "Z",
+                       "Special":  "COMMA",
+                       "Movement":  "LA(LS(N1))",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F20))"
+                   }
+    },
+    {
+        "x":  2,
+        "y":  4,
+        "label":  "X",
+        "slot":  "X",
+        "chord":  "Ctrl+Shift+F21",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "X",
+                       "Special":  "LBKT",
+                       "Movement":  "LA(LS(N2))",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F21))"
+                   }
+    },
+    {
+        "x":  3,
+        "y":  4,
+        "label":  "C",
+        "slot":  "C",
+        "chord":  "Ctrl+Shift+F22",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "C",
+                       "Special":  "RBKT",
+                       "Movement":  "LA(LS(N3))",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F22))"
+                   }
+    },
+    {
+        "x":  4,
+        "y":  4,
+        "label":  "V",
+        "slot":  "V",
+        "chord":  "Ctrl+Shift+F23",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "V",
+                       "Special":  "LS(GRAVE)",
+                       "Movement":  "LA(LS(N4))",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F23))"
+                   }
+    },
+    {
+        "x":  5,
+        "y":  4,
+        "label":  "B",
+        "slot":  "B",
+        "chord":  "Ctrl+Shift+F24",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "B",
+                       "Special":  "PG_DN",
+                       "Movement":  "LA(LS(N5))",
+                       "Magic":  "–",
+                       "Custom":  "LC(LS(F24))"
+                   }
+    },
+    {
+        "x":  6.4,
+        "y":  4,
+        "label":  "LC",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "LC(SPACE)",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "bt_2",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  7.8,
+        "y":  3.3,
+        "label":  "2",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "Layer Movement",
+                       "Special":  "Go to Base",
+                       "Movement":  "↓",
+                       "Magic":  "bt_3",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  10.1,
+        "y":  1.5,
+        "label":  "1",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "Layer Special",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  7,
+        "y":  1.5,
+        "label":  "1",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "Layer Special",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  9.3,
+        "y":  3.3,
+        "label":  "2",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "Layer Movement",
+                       "Special":  "Go to Base",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  10.7,
+        "y":  4,
+        "label":  "",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "–",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  12,
+        "y":  4,
+        "label":  "N",
+        "slot":  "N",
+        "chord":  "Ctrl+Alt+F13",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "N",
+                       "Special":  "COMMA",
+                       "Movement":  "LA(LS(N6))",
+                       "Magic":  "–",
+                       "Custom":  "LC(LA(F13))"
+                   }
+    },
+    {
+        "x":  13,
+        "y":  4,
+        "label":  "M",
+        "slot":  "M",
+        "chord":  "Ctrl+Alt+F14",
+        "activation":  false,
+        "layers":  {
+                       "Base":  "M",
+                       "Special":  "Num 1",
+                       "Movement":  "LA(LS(N7))",
+                       "Magic":  "–",
+                       "Custom":  "LC(LA(F14))"
+                   }
+    },
+    {
+        "x":  14,
+        "y":  4,
+        "label":  ",",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "COMMA",
+                       "Special":  "Num 2",
+                       "Movement":  "LA(LS(N8))",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  15,
+        "y":  4,
+        "label":  ".",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "DOT",
+                       "Special":  "Num 3",
+                       "Movement":  "LS(LA(N9))",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  16,
+        "y":  4.5,
+        "label":  "/",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "FSLH",
+                       "Special":  "KP_ENTER",
+                       "Movement":  "LA(LS(N0))",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  17,
+        "y":  4.5,
+        "label":  "PgUp",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "PG_UP",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "reset",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  0,
+        "y":  5.5,
+        "label":  "magic",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "Magic",
+                       "Special":  "LS(KP_NUM)",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  1,
+        "y":  5.5,
+        "label":  "Caps",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "Caps Word",
+                       "Special":  "CAPS",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  2,
+        "y":  5,
+        "label":  "END",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "END",
+                       "Special":  "INS",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  3,
+        "y":  5,
+        "label":  "LEFT",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "LEFT",
+                       "Special":  "PSCRN",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  4,
+        "y":  5,
+        "label":  "RIGHT",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "RIGHT",
+                       "Special":  "TAB",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  5.3,
+        "y":  5.4,
+        "label":  "Space",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "SPACE",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "bt_0",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  6.6,
+        "y":  5,
+        "label":  "Enter",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "RET",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "bt_1",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  9,
+        "y":  3.2,
+        "label":  "Custom",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  true,
+        "layers":  {
+                       "Base":  "Layer Custom",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "out OUT_USB",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  8,
+        "y":  3.2,
+        "label":  "Custom",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  true,
+        "layers":  {
+                       "Base":  "Layer Custom",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  10.4,
+        "y":  5,
+        "label":  "Tab",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "TAB",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  11.7,
+        "y":  5.4,
+        "label":  "Bksp",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "BSPC",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  13,
+        "y":  5,
+        "label":  "UP",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "UP",
+                       "Special":  "Num 0",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  14,
+        "y":  5,
+        "label":  "DOWN",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "DOWN",
+                       "Special":  "Num 0",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  15,
+        "y":  5,
+        "label":  "[",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "LBKT",
+                       "Special":  "KP_DOT",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  16,
+        "y":  5.5,
+        "label":  "]",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "RBKT",
+                       "Special":  "KP_ENTER",
+                       "Movement":  "↓",
+                       "Magic":  "–",
+                       "Custom":  "↓"
+                   }
+    },
+    {
+        "x":  17,
+        "y":  5.5,
+        "label":  "PgDn",
+        "slot":  null,
+        "chord":  {
+
+                  },
+        "activation":  false,
+        "layers":  {
+                       "Base":  "PG_DN",
+                       "Special":  "↓",
+                       "Movement":  "↓",
+                       "Magic":  "Go to Movement",
+                       "Custom":  "↓"
+                   }
+    }
+]

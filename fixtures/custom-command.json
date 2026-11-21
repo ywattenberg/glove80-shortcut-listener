@@ -1,0 +1,3 @@
+{
+  "F13": { "command": "increment_counter", "args": { "amount": 3 } }
+}

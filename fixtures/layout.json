@@ -1,0 +1,106 @@
+[
+    {
+        "slot":  "A",
+        "chord":  "F13"
+    },
+    {
+        "slot":  "S",
+        "chord":  "F14"
+    },
+    {
+        "slot":  "D",
+        "chord":  "F15"
+    },
+    {
+        "slot":  "F",
+        "chord":  "F16"
+    },
+    {
+        "slot":  "G",
+        "chord":  "F17"
+    },
+    {
+        "slot":  "H",
+        "chord":  "F18"
+    },
+    {
+        "slot":  "J",
+        "chord":  "F19"
+    },
+    {
+        "slot":  "K",
+        "chord":  "F20"
+    },
+    {
+        "slot":  "L",
+        "chord":  "F21"
+    },
+    {
+        "slot":  "Q",
+        "chord":  "F22"
+    },
+    {
+        "slot":  "W",
+        "chord":  "F23"
+    },
+    {
+        "slot":  "E",
+        "chord":  "F24"
+    },
+    {
+        "slot":  "R",
+        "chord":  "Ctrl+Shift+F13"
+    },
+    {
+        "slot":  "T",
+        "chord":  "Ctrl+Shift+F14"
+    },
+    {
+        "slot":  "Y",
+        "chord":  "Ctrl+Shift+F15"
+    },
+    {
+        "slot":  "U",
+        "chord":  "Ctrl+Shift+F16"
+    },
+    {
+        "slot":  "I",
+        "chord":  "Ctrl+Shift+F17"
+    },
+    {
+        "slot":  "O",
+        "chord":  "Ctrl+Shift+F18"
+    },
+    {
+        "slot":  "P",
+        "chord":  "Ctrl+Shift+F19"
+    },
+    {
+        "slot":  "Z",
+        "chord":  "Ctrl+Shift+F20"
+    },
+    {
+        "slot":  "X",
+        "chord":  "Ctrl+Shift+F21"
+    },
+    {
+        "slot":  "C",
+        "chord":  "Ctrl+Shift+F22"
+    },
+    {
+        "slot":  "V",
+        "chord":  "Ctrl+Shift+F23"
+    },
+    {
+        "slot":  "B",
+        "chord":  "Ctrl+Shift+F24"
+    },
+    {
+        "slot":  "N",
+        "chord":  "Ctrl+Alt+F13"
+    },
+    {
+        "slot":  "M",
+        "chord":  "Ctrl+Alt+F14"
+    }
+]
