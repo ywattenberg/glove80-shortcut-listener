@@ -34,7 +34,7 @@ Launch the local editor with the TOML file you want to edit:
 
     .\target\release\glove80-editor.exe example.toml
 
-Open http://127.0.0.1:8765. The cheat sheet shows Base, Special, Movement, Magic, and Custom from firmware commit 2fce90f. The two highlighted thumb keys activate Custom. On that layer, select a letter and assign any named action from your TOML file. Use New action or Edit action in Custom to define a reusable action and assign it to the selected key. Use this action stages the change. Save changes writes the TOML file. An edit to a shared action affects every key assigned to it. Reload reads any edits made directly in TOML. Ctrl+C in the editor terminal stops the server.
+Open http://127.0.0.1:8765. The cheat sheet shows Base, Special, Movement, Magic, and Custom from firmware commit 2fce90f. The two highlighted thumb keys activate Custom. On that layer, select a letter and assign any named action from your TOML file. The action editor opens for the selected Custom key. The Windows action dropdown lists saved actions plus Edit selected action and Create new action. Use this action stages the change. Save changes writes the TOML file. An edit to a shared action affects every key assigned to it. Reload reads any edits made directly in TOML. Ctrl+C in the editor terminal stops the server.
 
 ### Configuration format
 
@@ -75,3 +75,12 @@ args = []
 - `app.command` accepts an optional argument table. The target app opens the named pipe, accepts successive connections, and handles a newline-terminated UTF-8 JSON message such as `{"command":"start_timer","args":{"minutes":25}}`.
 - `process.run` accepts an optional array of string arguments and an optional working directory in `cwd`. Use a full executable path when it is unavailable on PATH.
 - `window.focus_or_launch` matches the process by executable basename and uses `exe` and optional string arguments if it needs to launch. Windows controls foreground activation.
+
+## Keyboard layouts
+
+- [Glove80 layer diagrams](docs/layouts/glove80.md) show Base, Special, Movement, Magic, and Custom.
+- [Moonlander layer diagrams](docs/layouts/moonlander.md) show the four layers in the current QMK source.
+
+## Moonlander firmware
+
+See [Moonlander firmware](firmware/moonlander/README.md) for the QMK port of the Glove80 Custom shortcut layer.

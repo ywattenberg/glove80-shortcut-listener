@@ -15,7 +15,7 @@ h1{font-size:clamp(27px,3vw,40px);letter-spacing:-.045em;margin:0 0 6px}h2{font-
 .legend{display:flex;color:#59637a;gap:17px;flex-wrap:wrap;font-size:12px}.legend span{display:flex;align-items:center;gap:6px}.dot{width:10px;height:10px;border-radius:3px;background:#eeeaff;border:1px solid #c7bdf9}.dot.thumb{background:#e7eef9;border-color:#aabbd3}
 .detail{padding:19px}.detail-top{padding-bottom:16px;border-bottom:1px solid #e7e9f0;margin-bottom:16px}.detail-top p{margin-top:4px}.detail label{font-weight:650;font-size:13px;display:block;margin-bottom:7px}select{width:100%;border:1px solid #cdd4e4;border-radius:7px;background:#fff;color:#253048;padding:8px}#action-details{padding-top:15px;font-size:13px;overflow-wrap:anywhere}.disk{margin-top:14px;min-height:24px;color:#3f4c68;font-size:13px}.error{color:#9a2343}
 @media(max-width:1000px){.workspace{grid-template-columns:minmax(0,1fr)}.detail{max-width:none}.detail-top{margin-bottom:14px}}@media(max-width:620px){main,.bar{padding-left:15px;padding-right:15px}.intro{display:block}.tag{display:block;margin-top:8px}.board-card{padding:12px}#file{display:none}}
-.key small{font:650 9px "Geist","Segoe UI",sans-serif;line-height:1.05}.key.long{font-size:clamp(8px,.88vw,11px)}.key-list{margin-top:16px;color:#43506a}.key-list summary{cursor:pointer;font-weight:650}.key-list ul{padding-left:20px;columns:2;line-height:1.55}.key-list li{break-inside:avoid;margin-bottom:4px}.action-buttons{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.action-buttons button{font-size:12px;padding:7px 9px}.action-form{margin-top:16px;border-top:1px solid #e7e9f0;padding-top:12px}.action-form input,.action-form textarea{width:100%;border:1px solid #cdd4e4;border-radius:7px;padding:7px;font:inherit;margin-bottom:9px}.action-form select{margin-bottom:9px}.action-form textarea{resize:vertical}.action-form label{margin-bottom:4px}.action-form p{font-size:12px;margin-bottom:8px}
+.key small{font:650 9px "Geist","Segoe UI",sans-serif;line-height:1.05}.key .modifier{display:block;max-width:100%;line-height:1.12;white-space:normal}.key .function-key{font-size:9px;font-weight:700}.key.long{font-size:clamp(8px,.88vw,11px)}.key-list{margin-top:16px;color:#43506a}.key-list summary{cursor:pointer;font-weight:650}.key-list ul{padding-left:20px;columns:2;line-height:1.55}.key-list li{break-inside:avoid;margin-bottom:4px}.action-buttons{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.action-buttons button{font-size:12px;padding:7px 9px}.action-form{margin-top:16px;border-top:1px solid #e7e9f0;padding-top:12px}.action-form input,.action-form textarea{width:100%;border:1px solid #cdd4e4;border-radius:7px;padding:7px;font:inherit;margin-bottom:9px}.action-form select{margin-bottom:9px}.action-form textarea{resize:vertical}.action-form label{margin-bottom:4px}.action-form p{font-size:12px;margin-bottom:8px}
 </style>
 <header><div class="bar"><div class="brand"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="5" width="9" height="13" rx="2"/><rect x="13" y="5" width="9" height="13" rx="2"/><path d="M5 9h3m-3 4h3m8-4h3m-3 4h3"/></svg></span>Glove80 Layout Editor</div><div class="controls"><span id="file"></span><button id="reload" class="secondary">Reload</button><button id="save" class="primary" disabled>Save changes</button></div></div></header>
 <main>
@@ -26,7 +26,7 @@ h1{font-size:clamp(27px,3vw,40px);letter-spacing:-.045em;margin:0 0 6px}h2{font-
 <div class="scroller"><div id="board" class="board" aria-label="Glove80 physical key positions"></div></div>
 <div id="legend" class="legend"></div><details class="key-list"><summary>Read all keys as text</summary><ul id="key-list"></ul></details>
 </section>
-<aside class="detail" aria-label="Shortcut assignment"><div class="detail-top"><h2 id="selection">Shortcut assignment</h2><p id="description"></p></div><div id="edit" hidden><label for="action">Windows action</label><select id="action"></select><p id="action-details"></p><div class="action-buttons"><button class="secondary" id="new-action">New action</button><button class="secondary" id="edit-action">Edit action</button></div><form class="action-form" id="action-form" hidden><div id="action-fields"></div><div class="action-buttons"><button type="submit" class="primary">Use this action</button><button type="button" id="cancel-action" class="secondary">Cancel</button></div></form></div><p id="read-only" hidden>Switch to Custom to edit listener bindings.</p></aside>
+<aside class="detail" aria-label="Shortcut assignment"><div class="detail-top"><h2 id="selection">Shortcut assignment</h2><p id="description"></p></div><div id="edit" hidden><label for="action">Windows action</label><select id="action"></select><p id="action-details"></p><form class="action-form" id="action-form" hidden><div id="action-fields"></div><div class="action-buttons"><button type="submit" class="primary">Use this action</button><button type="button" id="cancel-action" class="secondary">Cancel</button></div></form></div><p id="read-only" hidden>Switch to Custom to edit listener bindings.</p></aside>
 </div>
 <p id="status" class="disk" role="status"></p>
 </main>
@@ -54,7 +54,7 @@ function render() {
     for (const name of layers) {
       const tab = document.createElement('button');
       tab.className = 'tab'; tab.textContent = name;
-      tab.onclick = () => { layer = name; closeAction(); render(); };
+      tab.onclick = () => { layer = name; render(); if (layer === "Custom" && saved) openCurrentAction(); };
       tabs.append(tab);
     }
   }
@@ -69,12 +69,13 @@ function render() {
     const inherited = key.layers[layer] === String.fromCharCode(8595);
         const full = isShortcut ? key.slot : readable(inherited ? key.layers.Base : key.layers[layer]);
     const [main, hold] = full.split(' · Hold ');
-    const text = main.replace(/ arrow$/, '').replace(/^Disabled$/, '—');
+    const hideInherited = layer === 'Custom' && inherited;
+    const text = isShortcut || hideInherited ? '' : main.replace(/ arrow$/, '').replace(/^Disabled$/, '—');
     const description = isShortcut ? key.chord + ' · ' + (actions()[bindings[key.slot]]?.label || 'Unassigned') : full;
     const row = document.createElement('li');
     const physical = readable(key.layers.Base).split(' · Hold ')[0];
-    row.textContent = (thumbs[index] ? 'Thumb · ' : '') + physical + ' — ' + description + (inherited ? ' (inherits)' : '');
-    list.append(row);
+    row.textContent = isShortcut ? description : (thumbs[index] ? 'Thumb · ' : '') + physical + ' — ' + description + (inherited ? ' (inherits)' : '');
+    if (!hideInherited) list.append(row);
     if ((element.tagName === 'BUTTON') !== isShortcut) {
       const replacement = document.createElement(isShortcut ? 'button' : 'div');
       element.replaceWith(replacement); element = replacement;
@@ -86,29 +87,37 @@ function render() {
     element.style.transform = 'rotate(' + rotation + 'deg)';
     element.classList.toggle('long', text.length >= 9);
     element.classList.toggle('inactive', inherited);
-    element.classList.toggle('activation', key.activation && (layer === 'Base' || layer === 'Custom'));
+    element.classList.toggle('activation', key.activation && layer === 'Base');
     element.classList.toggle('shortcut', isShortcut);
     element.classList.toggle('assigned', isShortcut && !!bindings[key.slot]);
     const title = inherited ? full + ' (inherits from lower layer)' : full;
     const name = document.createElement('span');
     name.textContent = text;
     name.style.transform = "rotate(" + (-rotation) + "deg)";
-    element.replaceChildren(name);
-    if (hold) { const detail = document.createElement("small"); detail.textContent = hold; element.append(detail); }
+    element.replaceChildren(...(text ? [name] : []));
+    if (hold && !hideInherited) { const detail = document.createElement("small"); detail.className = "modifier"; detail.textContent = "Hold " + hold; element.append(detail); }
     element.title = title;
     if (isShortcut) {
-      const chord = document.createElement('small');
-      chord.textContent = key.chord.split('+').at(-1);
-      element.append(chord);
+      const parts = key.chord.split('+');
+      const functionKey = document.createElement('small');
+      functionKey.className = 'function-key';
+      functionKey.textContent = parts.pop();
+      if (parts.length) {
+        const modifiers = document.createElement('small');
+        modifiers.className = 'modifier';
+        modifiers.textContent = parts.join(' + ');
+        element.append(modifiers);
+      }
+      element.append(functionKey);
       const binding = actions()[bindings[key.slot]]?.label || 'Unassigned';
       element.title = key.slot + ' · ' + key.chord + ' · ' + binding;
       element.setAttribute('aria-label', element.title);
       element.setAttribute('aria-pressed', selected === key.slot);
-      element.onclick = () => { selected = key.slot; closeAction(); render(); };
+      element.onclick = () => { selected = key.slot; render(); if (saved) openCurrentAction(); };
     }
   });
   byId('legend').innerHTML = layer === 'Custom'
-    ? '<span><i class="dot"></i>Assigned shortcut</span><span><i class="dot thumb"></i>Custom thumb key</span><span>Shaded keys inherit a lower layer</span>'
+    ? '<span><i class="dot"></i>Assigned shortcut</span><span>Blank keys inherit a lower layer</span>'
     : '<span>Shaded keys inherit a lower layer</span><span>Dual-role keys show tap / hold</span>';
   const show = layer === 'Custom';
   const slot = keys.find(key => key.slot === selected);
@@ -120,10 +129,19 @@ function render() {
   select.replaceChildren(new Option('Unassigned', ''));
   for (const [id, action] of Object.entries(actions())) select.add(new Option(action.label + ' (' + id + ')', id));
   select.value = bindings[selected] || '';
+  const commands = document.createElement('optgroup');
+  commands.label = 'Manage actions';
+  const edit = new Option('Edit selected action', '');
+  edit.dataset.command = 'edit';
+  edit.disabled = !bindings[selected];
+  const create = new Option('Create new action', '');
+  create.dataset.command = 'create';
+  commands.append(edit, create);
+  select.append(commands);
   const action = actions()[bindings[selected]];
   byId('action-details').textContent = action ? [action.type, action.command || action.exe].filter(Boolean).join(' · ') : 'Choose a named action from the TOML file.';
-  byId("edit-action").disabled = busy || !action;
-  byId("new-action").disabled = busy;
+
+
   select.disabled = busy;
   byId('save').disabled = busy || !dirty();
   byId('reload').disabled = busy;
@@ -135,7 +153,7 @@ async function loadConfig() {
     bindings = {...saved.bindings};
     draftActions = Object.create(null);
     draftApps = Object.create(null);
-    closeAction();
+    openCurrentAction();
     byId('file').textContent = saved.file;
     status(Object.keys(bindings).length + ' of 26 shortcuts assigned.');
   } catch (error) { status(error.message, true); }
@@ -144,8 +162,8 @@ async function loadConfig() {
 const types = {'app.command':'Send an app command','process.run':'Run a program or script','window.focus_or_launch':'Focus or launch a window'};
 const form = byId('action-form');
 let editing, formType;
-function closeAction() { form.hidden = true; }
-function actionForm(name) {
+function openCurrentAction(focus = false) { actionForm(bindings[selected], focus); }
+function actionForm(name, focus = false) {
   editing = name;
   const action = actions()[name] || {};
   form.hidden = false;
@@ -190,11 +208,11 @@ function actionForm(name) {
   }
   type.onchange = showFields;
   showFields();
-  id.focus();
+  if (focus) id.focus();
 }
-byId('new-action').onclick = () => actionForm();
-byId('edit-action').onclick = () => actionForm(bindings[selected]);
-byId('cancel-action').onclick = closeAction;
+
+
+byId('cancel-action').onclick = () => openCurrentAction();
 form.onsubmit = event => {
   event.preventDefault();
   const values = Object.fromEntries(new FormData(form));
@@ -217,17 +235,25 @@ form.onsubmit = event => {
     }
     draftActions[id] = definition;
     bindings[selected] = id;
-    closeAction();
+    openCurrentAction();
     status('Action and binding staged. Save changes to write the TOML file.');
     render();
   } catch (error) { status(error.message,true); }
 };
 byId('action').onchange = event => {
-  closeAction();
+  const menu = event.target;
+  const command = menu.selectedOptions[0]?.dataset.command;
+  if (command) {
+    menu.value = bindings[selected] || '';
+    if (command === 'edit') openCurrentAction(true);
+    else actionForm(undefined, true);
+    return;
+  }
   if (event.target.value) bindings[selected] = event.target.value;
   else delete bindings[selected];
   status(dirty() ? 'Unsaved binding changes.' : 'Bindings match the configuration file.');
   render();
+  openCurrentAction();
 };
 byId('reload').onclick = () => { if (!dirty() || confirm('Discard unsaved binding changes?')) loadConfig(); };
 byId('save').onclick = async () => {
@@ -237,7 +263,7 @@ byId('save').onclick = async () => {
     bindings = {...saved.bindings};
     draftActions = Object.create(null);
     draftApps = Object.create(null);
-    closeAction();
+    openCurrentAction();
     status('Saved. If the listener is running, it picks up changes on its next config check.');
   } catch (error) { status(error.message, true); }
   finally { busy = false; render(); }
