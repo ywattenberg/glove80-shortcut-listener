@@ -19,3 +19,8 @@ label = "Open work project"
 type = "process.run"
 exe = "powershell.exe"
 args = ["-NoProfile", "-NonInteractive", "-File", 'C:\Scripts\Open-Workspace.ps1', "-Project", "Glove80"]
+
+[actions.command_palette]
+label = "Open command palette"
+type = "keyboard.send"
+keys = "Ctrl+Shift+P"

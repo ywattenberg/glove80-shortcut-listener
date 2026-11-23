@@ -70,11 +70,19 @@ type = "window.focus_or_launch"
 process = "Code.exe"
 exe = "Code.exe"
 args = []
+
+[actions.command_palette]
+label = "Open command palette"
+type = "keyboard.send"
+keys = "Ctrl+Shift+P"
 ```
 
 - `app.command` accepts an optional argument table. The target app opens the named pipe, accepts successive connections, and handles a newline-terminated UTF-8 JSON message such as `{"command":"start_timer","args":{"minutes":25}}`.
 - `process.run` accepts an optional array of string arguments and an optional working directory in `cwd`. Use a full executable path when it is unavailable on PATH.
 - `window.focus_or_launch` matches the process by executable basename and uses `exe` and optional string arguments if it needs to launch. Windows controls foreground activation.
+- `keyboard.send` sends one key combination through Windows `SendInput`. In the editor, choose **Send keys** and enter a combination such as `Ctrl+Shift+P`, `Alt+Left`, or `F5`. The foreground app receives the keystroke unless Windows handles it as a system shortcut. A standard listener cannot send input to an elevated app. [Windows SendInput documentation](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendinput)
+
+Key combinations use any of `Ctrl`, `Shift`, `Alt`, and `Win`, followed by a key. Names are case-insensitive. Use letters, digits, `F1` through `F24`, navigation keys such as `PageUp`, or punctuation key names such as `Plus` and `Slash`. `Plus` names the main keyboard's equals/plus key, and `NumpadAdd` names the keypad key. The active Windows keyboard layout determines the characters produced by punctuation keys. For other keys, specify a hexadecimal Windows virtual-key code such as `VK_B3` for media play/pause. The 26 incoming Custom-layer combinations are reserved as triggers to prevent action loops. [Windows virtual-key codes](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes)
 
 ## Keyboard layouts
 

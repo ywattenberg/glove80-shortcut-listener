@@ -1,4 +1,4 @@
-param([switch]$WaitForPress, [switch]$Emulate, [switch]$SendOnly)
+param([switch]$WaitForPress, [switch]$Emulate, [switch]$SendOnly, [switch]$CheckRemap)
 $ErrorActionPreference = 'Stop'
 if (-not ('ShortcutProbe' -as [type])) {
     Add-Type @"
@@ -47,17 +47,53 @@ public static class ShortcutProbe {
     }
     [DllImport("user32.dll", SetLastError=true)]
     static extern uint SendInput(uint count, Input[] inputs, int size);
-    public static void SendF13() {
-        var down = new Input { type = 1 };
-        down.data.keyboard.key = 0x7C;
-        var up = down;
-        up.data.keyboard.flags = 2;
+    [DllImport("user32.dll")]
+    static extern short GetAsyncKeyState(int key);
+    static Input Key(ushort key, bool up) {
+        var input = new Input { type = 1 };
+        input.data.keyboard.key = key;
+        input.data.keyboard.flags = up ? 2u : 0u;
+        return input;
+    }
+    static void Send(params Input[] inputs) {
         int size = Marshal.SizeOf(typeof(Input));
-        uint sent = SendInput(2, new[] { down, up }, size);
-        if (sent != 2) {
+        uint sent = SendInput((uint)inputs.Length, inputs, size);
+        if (sent != inputs.Length) {
             int error = Marshal.GetLastWin32Error();
-            if (sent == 1) SendInput(1, new[] { up }, size);
-            throw new Win32Exception(error, "Incomplete F13 injection");
+            throw new Win32Exception(error, "Incomplete test input injection");
+        }
+    }
+    public static void SendF13() {
+        try { Send(Key(0x7C, false), Key(0x7C, true)); }
+        catch { Send(Key(0x7C, true)); throw; }
+    }
+    public static void CheckRemap() {
+        const int id = 315;
+        const uint hotkeyMessage = 0x0312;
+        const ushort ctrl = 0xA2, shift = 0xA0, f13 = 0x7C;
+        // Observe Ctrl+Alt+F10 while Shift is still held from the incoming chord.
+        if (!RegisterHotKey(IntPtr.Zero, id, 0x4003, 0x79))
+            throw new Win32Exception(Marshal.GetLastWin32Error(), "Could not reserve Ctrl+Alt+F10");
+        try {
+            Send(Key(ctrl, false), Key(shift, false), Key(f13, false), Key(f13, true));
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            while (timer.ElapsedMilliseconds < 5000) {
+                Message msg;
+                if (PeekMessage(out msg, IntPtr.Zero, hotkeyMessage, hotkeyMessage, 1)
+                    && msg.wParam.ToUInt64() == id) break;
+                Thread.Sleep(10);
+            }
+            if (timer.ElapsedMilliseconds >= 5000)
+                throw new TimeoutException("No remapped Ctrl+Alt+F10 received");
+            while (timer.ElapsedMilliseconds < 5000) {
+                if (GetAsyncKeyState(ctrl) < 0 && GetAsyncKeyState(shift) < 0
+                    && GetAsyncKeyState(0x12) >= 0) return;
+                Thread.Sleep(10);
+            }
+            throw new InvalidOperationException("The original modifier state was not restored");
+        } finally {
+            try { Send(Key(f13, true), Key(shift, true), Key(ctrl, true)); }
+            finally { UnregisterHotKey(IntPtr.Zero, id); }
         }
     }
     public static void Run(bool wait, bool emulate) {
@@ -87,6 +123,7 @@ public static class ShortcutProbe {
 "@
 }
 if ($SendOnly) { [ShortcutProbe]::SendF13(); return }
+if ($CheckRemap) { [ShortcutProbe]::CheckRemap(); return }
 [ShortcutProbe]::Run($WaitForPress.IsPresent, $Emulate.IsPresent)
 if ($Emulate) { "PASS: received synthetic F13 and released registration" } elseif ($WaitForPress) { "PASS: received F13 and released it" } else { "PASS: reserved and released F13" }
 

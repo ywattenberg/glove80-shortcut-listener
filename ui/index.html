@@ -139,7 +139,7 @@ function render() {
   commands.append(edit, create);
   select.append(commands);
   const action = actions()[bindings[selected]];
-  byId('action-details').textContent = action ? [action.type, action.command || action.exe].filter(Boolean).join(' · ') : 'Choose a named action from the TOML file.';
+  byId('action-details').textContent = action ? [types[action.type], action.keys || action.command || action.exe].filter(Boolean).join(' · ') : 'Choose a named action from the TOML file.';
 
 
   select.disabled = busy;
@@ -159,7 +159,7 @@ async function loadConfig() {
   } catch (error) { status(error.message, true); }
   finally { busy = false; render(); }
 }
-const types = {'app.command':'Send an app command','process.run':'Run a program or script','window.focus_or_launch':'Focus or launch a window'};
+const types = {'keyboard.send':'Send keys','app.command':'Send an app command','process.run':'Run a program or script','window.focus_or_launch':'Focus or launch a window'};
 const form = byId('action-form');
 let editing, formType;
 function openCurrentAction(focus = false) { actionForm(bindings[selected], focus); }
@@ -193,7 +193,17 @@ function actionForm(name, focus = false) {
     while (fields.children.length > permanent) fields.lastChild.remove();
     formType = type.value;
     const current = action.type === formType ? action : {};
-    if (formType === 'app.command') {
+    if (formType === 'keyboard.send') {
+      const keys = field('keys','Key combination',current.keys);
+      keys.placeholder = 'Ctrl+Shift+P';
+      keys.autocomplete = 'off';
+      keys.spellcheck = false;
+      const hint = document.createElement('p');
+      hint.id = 'keys-hint';
+      hint.textContent = 'Enter one key or combine it with Ctrl, Shift, Alt, or Win. Examples include F5, Alt+Left, and Ctrl+Plus.';
+      keys.setAttribute('aria-describedby', hint.id);
+      fields.append(hint);
+    } else if (formType === 'app.command') {
       field('app','App ID',current.app).pattern = '[a-zA-Z0-9_-]+';
       const pipe = field('pipe','Local named pipe',apps()[current.app]?.pipe);
       form.elements.app.oninput = event => { pipe.value = apps()[event.target.value]?.pipe || ''; };
@@ -219,17 +229,22 @@ form.onsubmit = event => {
   const {id,label,app,pipe,command,exe,process,cwd} = values;
   if (!editing && Object.hasOwn(actions(),id)) { status('That action ID already exists.', true); return; }
   try {
-    const args = JSON.parse(values.args);
-    let definition = {label, type: formType, args};
-    if (formType === 'app.command') {
+    const definition = {label, type: formType};
+    if (formType === 'keyboard.send') {
+      definition.keys = values.keys.trim();
+      if (!definition.keys) throw new Error('Enter a key combination.');
+    } else if (formType === 'app.command') {
+      const args = JSON.parse(values.args);
       if (args === null || typeof args !== 'object' || Array.isArray(args)) throw new Error('App arguments must be a JSON object.');
       const existing = apps()[app];
       if (existing && existing.pipe !== pipe) throw new Error('That app ID already uses a different pipe. Choose another ID or use its existing pipe.');
       if (!existing) draftApps[app] = {pipe};
-      definition = {...definition,app,command};
+      Object.assign(definition, {app, command, args});
     } else {
+      const args = JSON.parse(values.args);
       if (!Array.isArray(args) || args.some(arg => typeof arg !== 'string')) throw new Error('Program arguments must be a JSON list of strings.');
       definition.exe = exe;
+      definition.args = args;
       if (process) definition.process = process;
       if (cwd) definition.cwd = cwd;
     }

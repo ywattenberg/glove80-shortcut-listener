@@ -1,4 +1,7 @@
+mod chord;
 mod config;
+mod keyboard;
+use chord::trigger;
 use config::{Action, Bindings};
 use std::{
     env, fs, io,
@@ -79,6 +82,7 @@ fn focus_or_launch(process: &str, exe: &str, args: &[String]) -> io::Result<()> 
 
 fn perform(action: Action) -> io::Result<()> {
     match action {
+        Action::Keyboard(chord) => keyboard::send(chord),
         Action::Pipe(path, bytes) => {
             // One local connection per command. Never replay after a partial write.
             let mut pipe = fs::OpenOptions::new().write(true).open(path)?;
@@ -93,13 +97,16 @@ fn perform(action: Action) -> io::Result<()> {
 fn install(old: &Bindings, new: &Bindings) -> Result<(), String> {
     let mut added = Vec::new();
     for &id in new.keys().filter(|id| !old.contains_key(id)) {
-        let modifier = match id {
-            0..=11 => 0,
-            12..=23 => MOD_CONTROL | MOD_SHIFT,
-            _ => MOD_CONTROL | MOD_ALT,
-        };
-        let key = VK_F13 as u32 + id as u32 % 12;
-        if unsafe { RegisterHotKey(null_mut(), id, modifier | MOD_NOREPEAT, key) } == 0 {
+        let chord = trigger(id);
+        if unsafe {
+            RegisterHotKey(
+                null_mut(),
+                id,
+                chord.modifiers | MOD_NOREPEAT,
+                chord.key.into(),
+            )
+        } == 0
+        {
             let e = io::Error::last_os_error();
             for registered in added {
                 unsafe {

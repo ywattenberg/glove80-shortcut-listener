@@ -1,3 +1,4 @@
+use crate::chord::{trigger, Chord};
 use serde::Deserialize;
 use serde_json::{json, Value};
 use std::collections::BTreeMap;
@@ -25,6 +26,8 @@ struct App {
 #[derive(Deserialize)]
 #[serde(tag = "type", deny_unknown_fields)]
 enum Definition {
+    #[serde(rename = "keyboard.send")]
+    Keyboard { label: String, keys: String },
     #[serde(rename = "app.command")]
     Pipe {
         label: String,
@@ -53,6 +56,7 @@ enum Definition {
 
 #[derive(Clone)]
 pub enum Action {
+    Keyboard(Chord),
     Pipe(String, Vec<u8>),
     Process(String, Vec<String>, Option<String>),
     Window(String, String, Vec<String>),
@@ -78,6 +82,17 @@ pub fn compile(input: &str) -> Result<Bindings, String> {
     let mut actions = BTreeMap::new();
     for (name, def) in config.actions {
         let (label, action) = match def {
+            Definition::Keyboard { label, keys } => {
+                let chord =
+                    Chord::parse(&keys).map_err(|error| format!("actions.{name}.keys: {error}"))?;
+                if let Some(id) = (0..SLOTS.len() as i32).find(|id| trigger(*id) == chord) {
+                    let slot = SLOTS.as_bytes()[id as usize] as char;
+                    return Err(format!(
+                        "actions.{name}.keys: {keys} is the listener trigger for Custom {slot}; choose a different combination"
+                    ));
+                }
+                (label, Action::Keyboard(chord))
+            }
             Definition::Pipe {
                 label,
                 app,

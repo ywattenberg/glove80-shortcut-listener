@@ -1,3 +1,5 @@
+#[path = "../chord.rs"]
+mod chord;
 #[path = "../config.rs"]
 #[allow(dead_code)]
 mod config;
