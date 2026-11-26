@@ -642,7 +642,7 @@
         "chord":  "F17",
         "activation":  false,
         "layers":  {
-                       "Base":  "G / 1",
+                       "Base":  "G",
                        "Special":  "PG_UP",
                        "Movement":  "LA(N5)",
                        "Magic":  "rgb_ug RGB_EFF",
@@ -657,7 +657,7 @@
         "chord":  "F18",
         "activation":  false,
         "layers":  {
-                       "Base":  "H / 1",
+                       "Base":  "H",
                        "Special":  "LS(N5)",
                        "Movement":  "LA(N6)",
                        "Magic":  "–",
