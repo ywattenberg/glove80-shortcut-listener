@@ -34,7 +34,9 @@ Launch the local editor with the TOML file you want to edit:
 
     .\target\release\glove80-editor.exe example.toml
 
-Open http://127.0.0.1:8765. The cheat sheet shows Base, Special, Movement, Magic, and Custom from firmware commit 2fce90f. The two highlighted thumb keys activate Custom. On that layer, select a letter and assign any named action from your TOML file. The action editor opens for the selected Custom key. The Windows action dropdown lists saved actions plus Edit selected action and Create new action. Use this action stages the change. Save changes writes the TOML file. An edit to a shared action affects every key assigned to it. Reload reads any edits made directly in TOML. Ctrl+C in the editor terminal stops the server.
+Open http://127.0.0.1:8765 and choose Glove80 or Moonlander in the Keyboard menu. The Glove80 view shows Base, Special, Movement, Magic, and Custom. The Moonlander view shows Base, Symbols, Movement, and Custom. Its two highlighted Base-layer thumb keys activate Layer 3 (Custom) for the next keystroke.
+
+Select a Custom-layer shortcut to assign or edit a named Windows action. Both keyboards send the same 26 shortcut chords and share the assignments in the same TOML file. Use this action stages the change. Save changes writes the TOML file. An edit to a shared action affects every key assigned to it. Reload reads any edits made directly in TOML. Ctrl+C in the editor terminal stops the server.
 
 ### Configuration format
 

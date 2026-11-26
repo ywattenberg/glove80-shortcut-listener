@@ -153,6 +153,11 @@ fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
                     "application/json",
                     include_str!("../../ui/keyboard.json").into(),
                 ),
+                (&Method::Get, "/moonlander.json") => (
+                    200,
+                    "application/json",
+                    include_str!("../../ui/moonlander.json").into(),
+                ),
                 (&Method::Get, "/legends.js") => (
                     200,
                     "text/javascript",
